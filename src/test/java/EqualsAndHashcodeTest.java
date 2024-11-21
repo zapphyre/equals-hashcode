@@ -2,6 +2,7 @@ import org.junit.jupiter.api.Test;
 import pojo.KeyValue;
 import pojo.KeyValueEq;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -20,7 +21,8 @@ class EqualsAndHashcodeTest {
         KeyValue second = first.toBuilder().build();
 
         // When
-        Map<KeyValue, String> kvMap = Map.of(first, MAP_VALUE);
+        Map<KeyValue, String> kvMap = new HashMap<>();
+        kvMap.put(first, MAP_VALUE);
 
         // Then
         // memory references anr not the same; different objects
@@ -48,7 +50,8 @@ class EqualsAndHashcodeTest {
                 .build();
 
         // When
-        Map<KeyValueEq, String> kvMap = Map.of(first, MAP_VALUE);
+        Map<KeyValueEq, String> kvMap = new HashMap<>();
+        kvMap.put(first, MAP_VALUE);
 
         // Then
         // different memory references
